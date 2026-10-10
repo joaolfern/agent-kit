@@ -1,0 +1,33 @@
+@use '@/styles/tokens/border.scss' as *;
+@use '@/styles/tokens/mixins.scss' as *;
+
+.buttonIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  flex-shrink: 0;
+}
+
+.primary {
+  background: var(--color-primary-hover);
+  color: var(--color-page);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-primary);
+  }
+}
+
+.transparent {
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-primary);
+  }
+
+  &:hover {
+    @include card();
+  }
+}
+
+.secondary {
+  color: var(--color-text-subtle);
+}

@@ -1,0 +1,21 @@
+@use '@/styles/tokens/spacing.scss' as *;
+@use '@/styles/tokens/breakpoints.scss' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.title {
+  text-wrap: balance;
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-md;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

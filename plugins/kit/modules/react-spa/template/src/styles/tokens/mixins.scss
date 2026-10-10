@@ -1,0 +1,54 @@
+@use '@/styles/tokens/border.scss' as *;
+
+@mixin card {
+  border: $border-card;
+  backdrop-filter: blur(var(--blur-background));
+  background: var(--color-surface);
+}
+
+// Diagonal stripes standing in for a missing image.
+@mixin hatch-placeholder($stripe: 5px) {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-raised) 0 $stripe,
+    var(--color-surface) $stripe ($stripe * 2)
+  );
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      background: var(--color-text-muted);
+    }
+  }
+}
+
+// Skeleton text: the real line box with a bar painted on each line, so swapping in the content keeps the height.
+@mixin bone-text {
+  color: transparent;
+  background: linear-gradient(
+      transparent 20%,
+      var(--color-raised) 20% 80%,
+      transparent 80%
+    )
+    0 0 / 100% 1lh repeat-y;
+  user-select: none;
+}
+
+@mixin bone-block {
+  border-radius: $radius-md;
+  background: var(--color-raised);
+}

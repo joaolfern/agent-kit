@@ -1,0 +1,38 @@
+@use '@/styles/tokens/spacing.scss' as *;
+@use '@/styles/tokens/border.scss' as *;
+
+// The top bar and the page share one max-width and inline padding, so their edges line up.
+.layout {
+  --layout-max-width: #{$layout-focused-max-width};
+  min-height: 100dvh;
+  background: var(--color-page);
+}
+
+.topbar,
+.main {
+  max-width: var(--layout-max-width);
+  margin-inline: auto;
+  padding-inline: $spacing-md;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.brand {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.main {
+  padding-block: $spacing-lg $spacing-xxxl;
+}

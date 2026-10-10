@@ -1,0 +1,14 @@
+$radius-xs: 0.125rem;
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-md-lg: 0.625rem;
+$radius-lg: 1rem;
+$radius-xl: 2.625rem;
+$radius-full: 50rem;
+
+$border-width-base: 1px;
+$border-width-lg: 2px;
+$border-base: $border-width-base solid var(--color-border);
+$border-lg: $border-width-lg solid var(--color-border);
+
+$border-card: $border-width-base solid var(--color-border-strong);

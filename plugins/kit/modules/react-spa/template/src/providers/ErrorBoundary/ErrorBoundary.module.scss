@@ -1,0 +1,19 @@
+@use '@/styles/tokens/spacing.scss' as *;
+@use '@/styles/tokens/border.scss' as *;
+
+.errorBoundary {
+  padding: $spacing-lg;
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+  border-radius: $radius-md;
+  text-align: center;
+  margin: $spacing-lg 0;
+}
+
+.errorMessage {
+  background: var(--color-danger-soft);
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+  overflow-x: auto;
+  font-size: 0.95rem;
+}

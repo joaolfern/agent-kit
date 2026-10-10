@@ -1,0 +1,15 @@
+@use '@/styles/tokens/border.scss' as *;
+@use '@/styles/tokens/mixins.scss' as *;
+@use '@/styles/tokens/spacing.scss' as *;
+@use '@/styles/tokens/typography.scss' as *;
+
+.tag {
+  padding: $spacing-xxs $spacing-sm;
+  border-radius: $radius-xl;
+  line-height: $line-height-sm;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  @include card();
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="{{uiLanguage}}">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/openSans/OpenSans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta name="theme-color" content="#fbfafb" />
+    <script>
+      // Mirrors themeModes.ts: the saved theme paints the page and the browser bar before React loads.
+      ;(function () {
+        // kit:if theme-dimmed
+        var THEME_COLORS = { light: '#fbfafb', dark: '#0c0d10', dimmed: '#050313' }
+        // kit:end
+        // kit:if !theme-dimmed
+        var THEME_COLORS = { light: '#fbfafb', dark: '#0c0d10' }
+        // kit:end
+        var mode = null
+        try {
+          mode = localStorage.getItem('themeMode')
+        } catch (error) {}
+        if (!THEME_COLORS[mode]) {
+          mode = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light'
+        }
+        document.documentElement.style.setProperty('--color-page', THEME_COLORS[mode])
+        document.documentElement.style.colorScheme = mode
+        document
+          .querySelector('meta[name="theme-color"]')
+          .setAttribute('content', THEME_COLORS[mode])
+      })()
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+    <link rel="canonical" href="{{siteUrl}}/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{title}}" />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:url" content="{{siteUrl}}/" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

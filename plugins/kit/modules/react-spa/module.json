@@ -1,0 +1,13 @@
+{
+  "id": "react-spa",
+  "title": "Vite + React 19 SPA (React Compiler, react-router 7, TanStack Query, SCSS modules, MSW)",
+  "side": "web",
+  "order": 20,
+  "requires": ["js-tooling", "ui"],
+  "plugins": ["react"],
+  "packageWhen": {
+    "cloudflare-workers": {
+      "dependencies": { "{{contractPackage}}": "link:../api/packages/contract" }
+    }
+  }
+}

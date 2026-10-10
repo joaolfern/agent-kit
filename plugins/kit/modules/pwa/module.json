@@ -1,0 +1,12 @@
+{
+  "id": "pwa",
+  "title": "Installable PWA: injectManifest service worker, API GET cache, update prompt",
+  "side": "web",
+  "order": 30,
+  "requires": [
+    "react-spa"
+  ],
+  "ownerTodo": [
+    "Replace `public/logos/logo.svg` with the real logo, then run `pnpm pwa:icons` to generate the install icons the manifest lists."
+  ]
+}

@@ -1,0 +1,105 @@
+@use '@/styles/tokens/spacing.scss' as *;
+@use '@/styles/tokens/border.scss' as *;
+@use '@/styles/tokens/shadow.scss' as *;
+@use '@/styles/tokens/elevation.scss' as *;
+@use '@/styles/tokens/mixins.scss' as *;
+@use '@/styles/tokens/animations.scss' as *;
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xxxs;
+}
+
+.panel {
+  position: fixed;
+  z-index: $elevation-high;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  max-width: min(20rem, calc(100vw - 1rem));
+  max-height: min(20rem, calc(100dvh - 1rem));
+  overflow-y: auto;
+  padding: $spacing-xxxs;
+  border: $border-base;
+  border-radius: $radius-md-lg;
+  background: var(--color-surface);
+  box-shadow: $shadow-popover;
+
+  @include scrollbar();
+}
+
+.option {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 2.125rem;
+  padding: 0 0.625rem;
+  border-radius: $radius-md;
+  color: var(--color-text-base);
+  font-size: 0.875rem;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+
+  @include has-motion {
+    transition:
+      background 0.15s,
+      color 0.15s;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-raised);
+    outline: none;
+  }
+}
+
+.selected {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-weight: 500;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-primary-soft);
+  }
+
+  .optionIcon {
+    color: var(--color-primary);
+  }
+}
+
+.optionIcon {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-text-muted);
+}
+
+.optionLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.optionEnd {
+  flex: none;
+  margin-left: auto;
+}
+
+.check {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-xxs 0.625rem;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}

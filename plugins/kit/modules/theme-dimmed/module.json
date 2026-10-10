@@ -1,0 +1,7 @@
+{
+  "id": "theme-dimmed",
+  "title": "A third theme: a deep tinted page with translucent cards",
+  "side": "web",
+  "order": 35,
+  "requires": ["react-spa"]
+}
