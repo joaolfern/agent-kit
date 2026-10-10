@@ -1,0 +1,14 @@
+{
+  "id": "cloudflare-workers",
+  "title": "Cloudflare Workers backend: Hono gateway, a D1-owning service with RPC, zod contract package",
+  "side": "api",
+  "order": 20,
+  "requires": ["js-tooling"],
+  "plugins": ["cloudflare"],
+  "ownerTodo": [
+    "Create the D1 database: `pnpm --filter {{scope}}/items exec wrangler d1 create {{name}}-items-production`, and put its id in `services/items/wrangler.jsonc` → `env.production.d1_databases`.",
+    "Point `api.{{domain}}` at the gateway (the custom domain in `services/gateway/wrangler.jsonc` → `env.production`) after the first deploy.",
+    "Create the GitHub environment `production` with secrets `CLOUDFLARE_API_TOKEN` (Workers + D1 edit) and `CLOUDFLARE_ACCOUNT_ID`.",
+    "To publish `{{contractPackage}}` to npm: set up npm Trusted Publishing for this repo's workflow, then push a `contract-v<version>` tag."
+  ]
+}

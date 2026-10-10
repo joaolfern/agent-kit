@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "dev:router": "cd services/items && wrangler dev -c ../router/wrangler.jsonc -c wrangler.jsonc --persist-to .wrangler/state --port 8788"
+  }
+}

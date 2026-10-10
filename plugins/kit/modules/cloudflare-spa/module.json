@@ -1,0 +1,13 @@
+{
+  "id": "cloudflare-spa",
+  "title": "Host the SPA as a Cloudflare static-assets Worker",
+  "side": "web",
+  "order": 40,
+  "requires": ["react-spa"],
+  "conflicts": ["docker-spa"],
+  "plugins": ["cloudflare"],
+  "ownerTodo": [
+    "Add the domain `{{domain}}` to Cloudflare, then run `pnpm deploy:web` once (or let the deploy workflow do it).",
+    "Create the GitHub environment `production` with secrets `CLOUDFLARE_API_TOKEN` (Workers edit) and `CLOUDFLARE_ACCOUNT_ID`."
+  ]
+}

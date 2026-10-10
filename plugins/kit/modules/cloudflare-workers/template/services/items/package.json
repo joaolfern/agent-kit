@@ -1,0 +1,24 @@
+{
+  "name": "{{scope}}/items",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "migrate:local": "wrangler d1 migrations apply DB --local --persist-to .wrangler/state",
+    "deploy:production": "wrangler d1 migrations apply DB --remote --env production && wrangler deploy --env production",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "{{contractPackage}}": "workspace:*",
+    "hono": "^4.13.12",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.22.0",
+    "@cloudflare/workers-types": "^5.20261001.1",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.146.0"
+  }
+}

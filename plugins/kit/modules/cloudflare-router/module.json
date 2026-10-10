@@ -1,0 +1,10 @@
+{
+  "id": "cloudflare-router",
+  "title": "A public router Worker on the site's own domain (zone routes /r/*), reading data over RPC",
+  "side": "api",
+  "order": 30,
+  "requires": ["cloudflare-workers"],
+  "ownerTodo": [
+    "The router's zone route `{{domain}}/r/*` needs `{{domain}}` to be a Cloudflare zone; it runs before the SPA's custom domain."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "docker-spa",
+  "title": "Host the SPA as an nginx Docker image",
+  "side": "web",
+  "order": 40,
+  "requires": ["react-spa"],
+  "conflicts": ["cloudflare-spa"]
+}

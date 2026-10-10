@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "deploy:web": "pnpm build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.146.0"
+  }
+}

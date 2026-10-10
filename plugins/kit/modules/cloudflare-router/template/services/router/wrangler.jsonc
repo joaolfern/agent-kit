@@ -1,0 +1,28 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  // Public short links on the site's own domain; zone routes run before the SPA's custom domain.
+  "name": "{{name}}-router",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-22",
+  "observability": { "enabled": true },
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": { "HOME_URL": "http://localhost:5173/" },
+  "services": [
+    { "binding": "ITEMS", "service": "{{name}}-items", "entrypoint": "ItemsRpc" },
+  ],
+  "env": {
+    "production": {
+      "name": "{{name}}-router-production",
+      "vars": { "HOME_URL": "{{siteUrl}}/" },
+      "routes": [{ "pattern": "{{domain}}/r/*", "zone_name": "{{domain}}" }],
+      "services": [
+        {
+          "binding": "ITEMS",
+          "service": "{{name}}-items-production",
+          "entrypoint": "ItemsRpc",
+        },
+      ],
+    },
+  },
+}

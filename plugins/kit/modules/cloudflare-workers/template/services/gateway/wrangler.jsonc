@@ -1,0 +1,26 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  // The only public entry point of the API: CORS, then forwarding to private Workers over service bindings.
+  "name": "{{name}}-gateway",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-22",
+  "observability": { "enabled": true },
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {
+    "ALLOWED_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173",
+  },
+  "services": [{ "binding": "ITEMS", "service": "{{name}}-items" }],
+  "env": {
+    "production": {
+      "name": "{{name}}-gateway-production",
+      "routes": [{ "pattern": "api.{{domain}}", "custom_domain": true }],
+      "vars": {
+        "ALLOWED_ORIGINS": "{{siteUrl}},http://localhost:5173",
+      },
+      "services": [
+        { "binding": "ITEMS", "service": "{{name}}-items-production" },
+      ],
+    },
+  },
+}

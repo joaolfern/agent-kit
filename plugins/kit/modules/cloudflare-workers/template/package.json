@@ -1,0 +1,19 @@
+{
+  "name": "{{name}}-api",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.10.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "postinstall": "pnpm --filter {{contractPackage}} build",
+    "dev": "cd services/items && ([ -f .dev.vars ] || cp .dev.vars.example .dev.vars) && pnpm run migrate:local && wrangler dev -c ../gateway/wrangler.jsonc -c wrangler.jsonc --persist-to .wrangler/state",
+    "typecheck": "pnpm --filter {{contractPackage}} build && pnpm -r --if-present typecheck",
+    "test": "pnpm --filter {{contractPackage}} build && pnpm -r --if-present test",
+    "lint": "oxlint --fix --deny-warnings --report-unused-disable-directives packages services",
+    "format": "prettier --write \"packages/*/src/**\" \"packages/*/test/**\" \"services/*/src/**\" \"services/*/test/**\""
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3",
+    "wrangler": "^4.146.0"
+  }
+}

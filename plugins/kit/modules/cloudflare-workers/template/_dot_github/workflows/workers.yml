@@ -1,0 +1,66 @@
+name: Workers
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['contract-v*']
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+
+  deploy-production:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: check
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Order matters: a Worker must exist before another one binds to it.
+      - run: pnpm --filter {{scope}}/items run deploy:production
+      # kit:if cloudflare-router
+      - run: pnpm --filter {{scope}}/router run deploy:production
+      # kit:end
+      - run: pnpm --filter {{scope}}/gateway run deploy:production
+
+  publish-contract:
+    if: startsWith(github.ref, 'refs/tags/contract-v')
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@^11.5.1
+      - run: pnpm install --frozen-lockfile
+      # Trusted Publishing goes through the npm CLI, which accepts this workflow's OIDC identity.
+      - run: npm publish
+        working-directory: packages/contract

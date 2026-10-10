@@ -1,0 +1,1 @@
+# Local secrets for `pnpm dev`; copied to .dev.vars (gitignored). Remotely: `wrangler secret put <NAME> --env production`.
