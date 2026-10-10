@@ -1,0 +1,8 @@
+{
+  "id": "core",
+  "title": "Core working rules",
+  "side": "both",
+  "always": true,
+  "order": 0,
+  "plugins": ["core"]
+}

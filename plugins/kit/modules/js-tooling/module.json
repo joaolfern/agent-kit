@@ -1,0 +1,7 @@
+{
+  "id": "js-tooling",
+  "title": "JS/TS tooling: pnpm, oxlint, Prettier, husky + lint-staged",
+  "side": "both",
+  "order": 10,
+  "whenAny": ["react-spa", "cloudflare-workers"]
+}

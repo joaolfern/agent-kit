@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "oxlint": "^1.86.0",
+    "prettier": "^3.6.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": ["oxlint --fix --deny-warnings", "prettier --write"]
+  }
+}

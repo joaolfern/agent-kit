@@ -1,0 +1,7 @@
+{
+  "id": "other-stack",
+  "title": "Any other stack: no scaffold, a stack section written from the interview",
+  "side": "web",
+  "order": 20,
+  "conflicts": ["react-spa", "cloudflare-workers"]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "typescript",
+    "react"
+  ],
+  "categories": {
+    "correctness": "error"
+  },
+  "ignorePatterns": [
+    "build",
+    "node_modules",
+    "dist",
+    "scripts",
+    ".wrangler"
+  ],
+  "rules": {
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "info"
+        ]
+      }
+    ],
+    "no-inline-comments": "warn",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none"
+      }
+    ],
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "error",
+    "react/set-state-in-effect": "off",
+    "react/refs": "off",
+    "react/only-export-components": "error",
+    "no-warning-comments": [
+      "warn",
+      {
+        "terms": [
+          "add",
+          "fix",
+          "todo",
+          "do",
+          "const"
+        ],
+        "location": "anywhere"
+      }
+    ]
+  },
+  "env": {
+    "builtin": true
+  }
+}
