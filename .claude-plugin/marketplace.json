@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-kit",
+  "description": "João's agent setup: a project generator plus on-demand knowledge for working rules, UI craft, React and Cloudflare.",
+  "owner": { "name": "João Luiz Fernandes" },
+  "plugins": [
+    { "name": "kit", "source": "./plugins/kit", "description": "Start or adopt a project: interview, compose CLAUDE.md/AGENTS.md from modules, scaffold the chosen stack, and record new lessons back into the kit." },
+    { "name": "core", "source": "./plugins/core", "description": "Stack-agnostic working rules: release notes and architecture decision records." },
+    { "name": "ui-craft", "source": "./plugins/ui-craft", "description": "UI that doesn't look AI-generated: surfaces and themes, nesting, type, interaction, layout stability, zero-shift skeletons and a UI review pass." },
+    { "name": "react", "source": "./plugins/react", "description": "React 19 + React Compiler: render profiling with React DevTools through Chrome DevTools MCP." },
+    { "name": "cloudflare", "source": "./plugins/cloudflare", "description": "Cloudflare Workers backends: Hono gateway, D1 owned by one Worker behind RPC, migrations, tests and ordered deploys." }
+  ]
+}

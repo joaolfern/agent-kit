@@ -1,0 +1,6 @@
+{
+  "name": "react",
+  "version": "0.1.0",
+  "description": "React 19 + React Compiler: render profiling with React DevTools through Chrome DevTools MCP.",
+  "author": { "name": "João Luiz Fernandes" }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "ui-craft",
+  "version": "0.1.0",
+  "description": "UI that doesn't look AI-generated: surfaces and themes, nesting, type, interaction, layout stability, zero-shift skeletons and a UI review pass.",
+  "author": { "name": "João Luiz Fernandes" }
+}

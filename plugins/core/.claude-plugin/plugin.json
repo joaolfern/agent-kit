@@ -1,0 +1,6 @@
+{
+  "name": "core",
+  "version": "0.1.0",
+  "description": "Stack-agnostic working rules: release notes and architecture decision records.",
+  "author": { "name": "João Luiz Fernandes" }
+}
