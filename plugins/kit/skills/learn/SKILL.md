@@ -5,7 +5,7 @@ description: Use when the user corrects how the agent works or what it produced 
 
 # Record a lesson in agent-kit
 
-The kit lives in a git repo: the path in `.claude/settings.json` → `extraKnownMarketplaces.agent-kit.source.path` (directory source), or a local clone of the GitHub repo it names (ask where it is if unknown; default `~/dev/joao/agent-kit`).
+The kit lives in the GitHub repo `joaolfern/agent-kit`; edit a local clone (default `~/dev/joao/agent-kit`; ask if it isn't there), never the installed plugin cache.
 
 ## 1. Is it kit material?
 
@@ -32,10 +32,10 @@ Prefer extending an existing bullet over adding a new one. If a rule can be enfo
 
 - One bullet: the rule, then a short reason (**why** it matters, often the bug or the look that prompted it). Concrete over abstract: name the property, the token, the pattern.
 - Same voice as the file; no story of the session, no dates, no project names unless they're the example.
-- Show the user the diff in the kit repo. Don't commit unless they ask.
+- Show the user the diff in the kit repo. Don't commit or push unless they ask.
 
 ## 4. Propagate
 
 - Rules in `rules.md`/`claude.md`/`agents.md` reach existing projects when they refresh with the `adopt` skill (or run `compose.mjs … --context-only`); offer to refresh the current project.
-- Skill and reference changes reach every project on the next plugin update (`/plugin marketplace update agent-kit`), with nothing to regenerate.
+- Skill and reference changes reach every project once pushed and updated (`/plugin marketplace update agent-kit`), with nothing to regenerate.
 - Bump the plugin's `version` in its `.claude-plugin/plugin.json` when a skill changes, so updates are picked up.

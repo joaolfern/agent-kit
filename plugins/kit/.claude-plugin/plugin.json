@@ -1,6 +1,6 @@
 {
   "name": "kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Start or adopt a project: interview, compose CLAUDE.md/AGENTS.md from modules, scaffold the chosen stack, and record new lessons back into the kit.",
   "author": { "name": "João Luiz Fernandes" }
 }

@@ -35,14 +35,16 @@ When a project has both a web and an api side, it is composed into `web/` and `a
 
 ## Install
 
-Register the marketplace once (user settings), then install the plugins:
+Register the marketplace once (user settings), then install the generator:
 
 ```
-/plugin marketplace add /home/joaolfern/dev/joao/agent-kit
+/plugin marketplace add joaolfern/agent-kit
 /plugin install kit@agent-kit
 ```
 
-Generated projects also register the marketplace and enable their plugins in their own `.claude/settings.json`, so anyone opening the repo in Claude Code gets the same setup. Once this repo is on GitHub, use `{ "source": "github", "repo": "<owner>/agent-kit" }` as `marketplace` in `kit.config.json`.
+Generated projects also register this marketplace (GitHub source) and enable their plugins in their own `.claude/settings.json`, so anyone opening the repo in Claude Code gets the same setup. To try kit changes before pushing, compose with `"marketplace": { "source": "directory", "path": "<clone>" }`.
+
+Editing the kit: work in a local clone, bump the changed plugin's `version` in its `.claude-plugin/plugin.json`, push, then `/plugin marketplace update agent-kit`.
 
 ## Use
 

@@ -35,13 +35,13 @@ Write `<target>/kit.config.json` (it can be deleted after; `.claude/kit.json` ke
   "modules": ["react-spa", "pwa", "cloudflare-spa", "cloudflare-workers"],
   "brand": { "primary": "#d15c6a", "primaryHover": "#e07a87", "primarySoft": "#d15c6a30", "secondary": "#cf95e9", "secondarySoft": "#cf95e97c" },
   "agentsMd": true,
-  "marketplace": { "source": "directory", "path": "/home/joaolfern/dev/joao/agent-kit" },
+  "marketplace": { "source": "github", "repo": "joaolfern/agent-kit" },
   "otherStack": { "name": "", "summary": "", "commands": "", "layout": "", "checks": "" }
 }
 ```
 
 - `core` is always added; `js-tooling` and `ui` follow from the stack. Defaults: `siteUrl` `https://<domain>`, `apiUrl` `https://api.<domain>`, `contractPackage` `@<name>/contract`.
-- `marketplace` is what the project's `.claude/settings.json` registers so teammates' Claude Code loads the same plugins: a `directory` path on this machine, or `{ "source": "github", "repo": "<owner>/agent-kit" }` once the kit is pushed.
+- `marketplace` is what the project's `.claude/settings.json` registers so anyone opening the repo loads the same plugins. Default (and when omitted): the public GitHub repo. Use `{ "source": "directory", "path": "…/agent-kit" }` only to test unpushed kit changes.
 - Omit `otherStack` unless that module is chosen.
 
 ## 3. Compose

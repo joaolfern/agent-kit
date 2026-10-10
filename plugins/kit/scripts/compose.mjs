@@ -354,9 +354,9 @@ function settingsFiles(plan, dir, sideModules, vars) {
   const enabled = Object.fromEntries(plugins.map((plugin) => [`${plugin}@${MARKETPLACE}`, true]))
   const marketplace = vars.marketplace ?? { source: 'github', repo: 'joaolfern/agent-kit' }
   const next = deepMerge(settings, {
-    extraKnownMarketplaces: { [MARKETPLACE]: { source: marketplace } },
     enabledPlugins: { ...enabled, [`kit@${MARKETPLACE}`]: true },
   })
+  next.extraKnownMarketplaces = { ...settings.extraKnownMarketplaces, [MARKETPLACE]: { source: marketplace } }
   plan.set(settingsFile, `${JSON.stringify(next, null, 2)}\n`, { overwrite: true })
 
   const servers = sideModules.reduce((all, module) => ({ ...all, ...module.mcp }), {})
